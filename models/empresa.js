@@ -5,6 +5,14 @@ const EmpresaSchema = Schema({
         type: String,
         required: [true, 'El nombre es obligatorio']
     },
+    tipo: {
+        type: String,
+        required: [true, 'Tipo de empresa es obligatorio']
+    },
+    ubicacion: {
+        type: String,
+        required: false
+    },
     correo: {
         type: String,
         required: [true, 'El correo es obligatorio'],

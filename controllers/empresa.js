@@ -19,8 +19,8 @@ const getEmpresas = async (req = request, res = response) => {
 
 const postEmpresa = async (req = request, res = response) => {
 
-    const {nombre, correo, password, rol, sucursales} = req.body;
-    const empresaDB = new Empresa({nombre, correo, password, rol, sucursales});
+    const {nombre, tipo, ubicacion, correo, password, rol, sucursales} = req.body;
+    const empresaDB = new Empresa({nombre, tipo, ubicacion, correo, password, rol, sucursales});
 
 
 

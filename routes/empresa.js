@@ -10,10 +10,12 @@ const { validarJWT } = require('../middlewares/validar-jwt');
 
 const router = Router();
 
-router.get('/mostrar', getEmpresas);
+router.get('/mostrar', /*validarJWT,*/ getEmpresas);
 
 router.post('/agregar',[
+    //validarJWT,
     check('nombre', 'El nombre es olbigatorio').not().isEmpty(),
+    check('tipo', 'Tipo de empresa es obligatorio').not().isEmpty(),
     check('correo', 'El email es obligatorio').isEmail(),
     check('correo').custom( emailExiste ),
     check('password', 'La password es obligatorio para el post').not().isEmpty(),
@@ -24,7 +26,7 @@ router.post('/agregar',[
 ], postEmpresa);
 
 router.put('/editar/:id',[
-    validarJWT,
+    //validarJWT,
     check('id', 'No es un ID valido').isMongoId(),
     check('id').custom( existeEmpresaPorId ),
     check('correo', 'El correo no es valido').isEmail(),
@@ -36,7 +38,7 @@ router.put('/editar/:id',[
 ], putEmpresa);
 
 router.delete('/eliminar/:id',[
-    validarJWT,
+    //validarJWT,
     check('id', 'No es un ID valido').isMongoId(),
     check('id').custom( existeEmpresaPorId ),
     validarCampos
